@@ -1,0 +1,21 @@
+import os
+import json
+import zipfile
+import pandas as pd
+
+kaggle_dir = os.path.expanduser("~/Documents/kaggle")
+os.makedirs(kaggle_dir, exist_ok = True)
+with open("C:\\Users\\User\\Downloads\\kaggle.json","r") as f:
+    api_token=json.load(f)
+with open(os.path.join(kaggle_dir, "kaggle.json"), "w") as f:
+    json.dump(api_token, f)
+os.chmod(os.path.join(kaggle_dir, "kaggle.json"), 600)
+
+!pip install kaggle
+
+!kaggle datasets download -d joebeachcapital/students-performance
+
+with zipfile.ZipFile("C:\\Users\\User\\students-performance.zip","r")as zip_ref:
+    zip_ref.extractall("students-performance")
+
+df = pd.read_csv("")
