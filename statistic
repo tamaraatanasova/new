@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("C:\\Users\\User\\Desktop\\Data Science\\Vezbi 01\\Call Center Data.csv")
+
+df.head()
+df.describe()
+df.isnull().sum()
+
+threshold = pd.to_timedelta('00:03:00') 
+df['Talk Duration (AVG)'] = pd.to_timedelta(df['Talk Duration (AVG)'], errors='coerce')
+filtered_data = df[df['Talk Duration (AVG)'] >= threshold]
+print(filtered_data)
